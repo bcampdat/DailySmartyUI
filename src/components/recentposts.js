@@ -6,7 +6,7 @@ import * as actions from '../actions';
 class RecentPosts extends Component {
 
   componentDidMount() {
-    this.props.fetchRecentPosts();
+    this.props.fetchRecentResults();
   }
   render() {
     return (
