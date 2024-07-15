@@ -1,16 +1,24 @@
-import { SET_RECENT_RESULTS } from "../actions/types";
+import {
+  SET_RECENT_POSTS
+} from '../actions/types';
 
 const INIT_STATE = {
   posts: [],
-  recentResults: [],
-};
+  recentPosts: []
+}
 
-export default function (state = INIT_STATE, action) {
+export default function(state = INIT_STATE, action) {
   switch (action.type) {
-    case SET_RECENT_RESULTS:
-        // return [...state, recentPosts, action.payload]
-        return [...state.recentResults, action.payload];
-    default:
-      return state;
+      case SET_RECENT_POSTS:
+          // console.log("SET_RECENT_POSTS", action.payload);
+          const recentPosts = action.payload;
+          // console.log("RecentPosts", recentPosts);
+          return {
+                  ...state,
+                  recentPosts
+              }
+      default:
+          return state;
   }
+  
 }
