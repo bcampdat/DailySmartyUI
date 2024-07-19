@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { withRouter } from "react-router-dom";
 
 class SearchBar extends Component {
   handleFormSubmit = function ({ query }) {
-    console.log("trying to handle subimit for query", query);
-    // navegate to a new route.
-    this.props.history.push("/results");
+    // console.log("trying to handle subimit for query", query);
+    // // navegate to a new route.
+    // this.props.history.push("/results");
+    this.props.onSubmit(query);
   };
 
   renderInput(field) {
     return (
-      <input type="text" placeholder="Search DailySmarty" {...field.input} />
+      <input type="text" placeholder="Search Star Wars" {...field.input} />
     );
   }
 
@@ -25,6 +26,7 @@ class SearchBar extends Component {
       >
         {/* <input placeholder="Search DailySmarty"/> */}
         <Field name="query" component={this.renderInput} />
+        {/* <p>Press return to search</p> */}
       </form>
     );
   }
