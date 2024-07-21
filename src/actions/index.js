@@ -26,7 +26,7 @@ export function fetchRecentPosts() {
   };
 }
 
-export function fetchPostsWithQuery(query) {
+export function fetchPostsWithQuery(query, callback) {
   return function(dispatch) {
       axios.get(`https://swapi.dev/api/people/?search=${query}`)
           .then(response => {
@@ -38,6 +38,7 @@ export function fetchPostsWithQuery(query) {
           })
           .catch(error => {
               console.error("Error api  RESULTS get:", error);
-          });
+          })
+            if(callback) { callback() };
   }
 }
