@@ -16,13 +16,18 @@ class Home extends Component {
   }
   render() {
     return (
-      <div className="app">
-        {/* <h1>DevCamp React Starter</h1> */}
+      // <div className="app">
+      //   {/* <h1>DevCamp React Starter</h1> */}
+      //   <Logo />
+      //   <SearchBar
+      //     page="home"
+      //     onSubmit={(query) => this.handleSearchBarSubmit(query)}
+      //   />
+      //   <RecentPosts />
+      // </div>
+      <div className="home">
         <Logo />
-        <SearchBar
-          page="home"
-          onSubmit={(query) => this.handleSearchBarSubmit(query)}
-        />
+        <SearchBar onSubmit={(query) => this.handleSearchBarSubmit(query)} />
         <RecentPosts />
       </div>
     );
