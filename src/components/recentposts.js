@@ -19,7 +19,8 @@ class RecentPosts extends Component {
                 //     {results.name}
                 //     {/* {post.title}    con la api dealy smarty */}
                 // </li>
-                <Post {...results} key={index}/>
+                // <Post {...results} key={index}/>
+                <Post type="recent" {...results} key={index}/>
             )   
         }
     })

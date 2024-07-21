@@ -6,8 +6,8 @@ import Post from './post';
 
 class ResultsPosts extends Component {
     renderPosts() {
-        const posts = this.props.posts.map((post, index) => {
-            return <Post type="result" key={index} {...post}/>
+        const posts = this.props.posts.map((results, index) => {
+            return <Post type="result" key={index} {...results}/>
         })
         return posts;
     }
