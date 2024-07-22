@@ -34,42 +34,58 @@ class Post extends Component {
   //     )
   // }
 
-//   getNameForPostLink(str) {
+  getNameForPostLink(str) {
+    //     // https://swapi.dev/api/films/1/
+    // let link = str.substring(str.indexOf("/api/") + 5, str.lastindexOf("/"));
 
-//     // https://swapi.dev/api/films/14/
-//     let link = str.substring(str.indexOf("/api/") + 5, str.lastindexOf("/"));
+    var n = str.lastIndexOf("/api/");
+    var link = str.substring(n + 5, str.length);
 
-      // var n = str.lastIndexOf('/');
-      // var link = str.substring(n + 1, str.length);
+    if (link.includes ("/")) {
+      link = link.replace("/", " ");
+    }
 
-//     // var n = str.IndexOf('/');
-//     // var link = str.substring(n + 2, str.length);
+    if (n + 1 == str.length) {
+      link = str.slice(0, n);
+      n = link.lastIndexOf("/");
+      link = str.substring(n + 1, str.length - 1);
+    }    
 
-//     // if((n+2) == str.length) {
-//     //     link = str.slice(0, n);
-//     //     n = link.IndexOf('//');
-//     //     link = str.substring(n + 1, str.length - 1);
-//     // }    
+    if (link.includes(".html")) {
+      link = link.substring(0, link.length - 5);
+    }
+    if (link.includes(".htm")) {
+      link = link.substring(0, link.length - 4);
+    }
 
-//     // if(link.includes('.html')) {
-//     //     link = link.substring(0, link.length - 5);
-//     // }
-//     // if(link.includes('.htm')) {
-//     //     link = link.substring(0, link.length - 4);
-//     // }
+    return link;
+  }
 
-    
-//     return link;
-// }
+  // interface IFilm {
+  //   title: string;
+  //   episode_id: number;
+  //   opening_crawl: string;
+  //   director: string;
+  //   producer: string;
+  //   release_date: string;
+  //   characters: string[];
+  //   planets: string[];
+  //   starships: string[];
+  //   vehicles: string[];
+  //   species: string[];
+  //   created: string;
+  //   edited: string;
+  //   url: string;
+  // }
 
   renderLinks() {
-    let links = this.props.films.map((results, index) => {
+    let links = this.props.films.map((url, index) => {
       return (
         <div className="post-link" key={index}>
           <div className="post-link__box"></div>
           <div className="post-link__link">
-            <a href={results.url}>Useful Link #{index + 1}</a>
-            {/* <a href={results.url}>{this.getNameForPostLink(results.url)}</a> */}
+            {/* <a href={url}>Useful Link #{url}</a> */}
+            <a href={url}>{this.getNameForPostLink(url)}</a>
           </div>
         </div>
       );
@@ -88,10 +104,11 @@ class Post extends Component {
     } else if (this.props.type == "result") {
       return (
         // <li className="result-post">
-        <li className="result-post"
-                    onMouseEnter={() => this.setState({ height: 70 })}
-                    onMouseLeave={() => this.setState({ height: 0 })}
-                >
+        <li
+          className="result-post"
+          onMouseEnter={() => this.setState({ height: 70 })}
+          onMouseLeave={() => this.setState({ height: 0 })}
+        >
           <div className="result-post__topics">{this.renderTopics()}</div>
           <div className="result-post__title">
             {/* {this.props.name}
@@ -103,9 +120,7 @@ class Post extends Component {
               onMouseEnter={() => this.setState({ height: 70 })}
               onMouseLeave={() => this.setState({ height: 0 })}
             > */}
-            <a href={this.props.films[0]}>
-            {this.props.name}
-            </a>
+            <a href={this.props.films[0]}>{this.props.name}</a>
           </div>
           <AnimateHeight duration={500} height={this.state.height}>
             <div className="result-post__links">{this.renderLinks()}</div>
