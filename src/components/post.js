@@ -41,7 +41,7 @@ class Post extends Component {
     var n = str.lastIndexOf("/api/");
     var link = str.substring(n + 5, str.length);
 
-    if (link.includes ("/")) {
+    if (link.includes("/")) {
       link = link.replace("/", " ");
     }
 
@@ -49,7 +49,7 @@ class Post extends Component {
       link = str.slice(0, n);
       n = link.lastIndexOf("/");
       link = str.substring(n + 1, str.length - 1);
-    }    
+    }
 
     if (link.includes(".html")) {
       link = link.substring(0, link.length - 5);
@@ -90,6 +90,9 @@ class Post extends Component {
         </div>
       );
     });
+    if (links == 0) {
+      return <div className="no-content">No Post Links</div>;
+    }
     return links;
   }
 
