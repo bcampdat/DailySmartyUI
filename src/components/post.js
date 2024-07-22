@@ -10,7 +10,7 @@ class Post extends Component {
     };
   }
   renderTopics() {
-    let topics = this.props.vehicles.map((topic, index) => {
+    let topics = this.props.starships.map((topic, index) => {
       return (
         <span className="post-topic" key={index}>
           {topic}
@@ -33,13 +33,43 @@ class Post extends Component {
   //         </li>
   //     )
   // }
+
+//   getNameForPostLink(str) {
+
+//     // https://swapi.dev/api/films/14/
+//     let link = str.substring(str.indexOf("/api/") + 5, str.lastindexOf("/"));
+
+      // var n = str.lastIndexOf('/');
+      // var link = str.substring(n + 1, str.length);
+
+//     // var n = str.IndexOf('/');
+//     // var link = str.substring(n + 2, str.length);
+
+//     // if((n+2) == str.length) {
+//     //     link = str.slice(0, n);
+//     //     n = link.IndexOf('//');
+//     //     link = str.substring(n + 1, str.length - 1);
+//     // }    
+
+//     // if(link.includes('.html')) {
+//     //     link = link.substring(0, link.length - 5);
+//     // }
+//     // if(link.includes('.htm')) {
+//     //     link = link.substring(0, link.length - 4);
+//     // }
+
+    
+//     return link;
+// }
+
   renderLinks() {
-    let links = this.props.vehicles.map((results, index) => {
+    let links = this.props.films.map((results, index) => {
       return (
         <div className="post-link" key={index}>
           <div className="post-link__box"></div>
           <div className="post-link__link">
             <a href={results.url}>Useful Link #{index + 1}</a>
+            {/* <a href={results.url}>{this.getNameForPostLink(results.url)}</a> */}
           </div>
         </div>
       );
@@ -73,7 +103,7 @@ class Post extends Component {
               onMouseEnter={() => this.setState({ height: 70 })}
               onMouseLeave={() => this.setState({ height: 0 })}
             > */}
-            <a href={this.props.url_for_post}>
+            <a href={this.props.films[0]}>
             {this.props.name}
             </a>
           </div>
